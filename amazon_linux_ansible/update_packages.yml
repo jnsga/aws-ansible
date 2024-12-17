@@ -1,6 +1,7 @@
 ---
 - name: Update packages and install nginx on Amazon Linux
   become: true
+  hosts: all
   
   tasks:
     - name: Update all packages
