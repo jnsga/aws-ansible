@@ -5,12 +5,12 @@
   
   tasks:
     - name: Update all packages
-      dnf:
+      yum:
         name: '*'
         state: latest
     
     - name: Install nginx
-      dnf:
+      yum:
         name: nginx
         state: latest
     
