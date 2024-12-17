@@ -11,3 +11,8 @@
       apt:
         upgrade: dist
         force_apt_get: yes
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
