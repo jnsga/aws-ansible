@@ -1,0 +1,8 @@
+plugin: aws_ec2
+regions:
+  - eu-central-1
+hostnames:
+  - i-0db16cb90dc1e08b9
+# This will return the Instances with the tag "playbook" set to "linux"
+# filters:
+#   tag:playbook: linux
