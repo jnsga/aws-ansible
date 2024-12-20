@@ -1,0 +1,30 @@
+---
+- name: Update system and install Nginx on AlmaLinux 9
+  hosts: aws_ec2
+  become: true
+  gather_facts: false
+  vars:
+    ansible_connection: aws_ssm
+
+  tasks:
+    - name: Update all packages
+      dnf:
+        name: "*"
+        state: latest
+        update_cache: yes
+
+    - name: Install EPEL repository
+      dnf:
+        name: epel-release
+        state: present
+
+    - name: Install Nginx
+      dnf:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
