@@ -1,6 +1,6 @@
 ---
 - name: Update system and install Nginx on AlmaLinux 9
-  hosts: aws_ec2
+  hosts: all
   become: true
   gather_facts: false
   vars:
