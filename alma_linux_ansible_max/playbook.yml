@@ -3,8 +3,7 @@
   hosts: all
   become: true
   gather_facts: false
-  vars:
-    ansible_connection: aws_ssm
+  
 
   tasks:
     - name: Update all packages
