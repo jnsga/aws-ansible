@@ -1,5 +1,4 @@
 ---
-# Wait for SSM Agent to be available on the Instance
 - name: Wait for connection to be available
   hosts: all
   gather_facts: false
@@ -16,23 +15,6 @@
     - name: Wait for connection
       wait_for_connection:
 
-# Stop Spooler Process on Windows Instances
-# - name: Stop Spooler Service on Windows Instances
-#   hosts: all
-#   vars:
-#     ansible_connection: aws_ssm
-#     ansible_shell_type: powershell
-#     ansible_aws_ssm_bucket_name: trainee-bkt
-#     ansible_aws_ssm_region: eu-central-1
-#   tasks:
-#     - name: Stop spooler service
-#       win_service:
-#         name: spooler
-#         state: stopped
-
-
-
-# Create a directory in Windows Instances
 - name: Create a directory in Windows Instance
   hosts: all
   vars:
@@ -43,39 +25,10 @@
   tasks:
     - name: Create a Directory
       win_file:
-        path: C:\temp2
+        path: C:\AnsibleTestDir
         state: directory
 
-
-
-# Execution: ansible-playbook linux.yaml -i aws_ec2.yml
-# =====================================================
-# # aws_ec2.yml (Dynamic Inventory - Windows)
-# plugin: aws_ec2
-# regions:
-#   - us-east-1
-# hostnames:
-#   - instance-id
-# # This will return the Instances with the tag "SSMTag" set to "ssmwindows"
-# filters:
-#   tag:SSMTag: ssmwindows
-# -----------------------
-- name: Create a dir.
-  hosts: all
-  gather_facts: false
-  vars:
-    ansible_connection: aws_ssm
-    ansible_shell_type: powershell
-    ansible_aws_ssm_bucket_name: trainee-bkt
-    ansible_aws_ssm_region: eu-central-1
-  tasks:
-    - name: Create the directory
-      win_file:
-        path: C:\Temp\SSM_Testing5
-        state: directory
-
-
-- name: Install Chrome using Chocolatey
+- name: Install Chocolatey and Google Chrome
   hosts: all
   gather_facts: false
   vars:
